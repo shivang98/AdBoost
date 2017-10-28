@@ -1,107 +1,115 @@
-package com.example.brainhackers.adboost;
-
-/**
- * Created by shivang on 28/10/17.
- */
+package com.example.shivang.facialrecognition;
 
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 
+import com.github.mikephil.charting.charts.BarChart;
 import com.github.mikephil.charting.charts.PieChart;
 import com.github.mikephil.charting.components.Legend;
+import com.github.mikephil.charting.components.XAxis;
+import com.github.mikephil.charting.components.YAxis;
+import com.github.mikephil.charting.data.BarData;
+import com.github.mikephil.charting.data.BarDataSet;
+import com.github.mikephil.charting.data.BarEntry;
 import com.github.mikephil.charting.data.PieData;
 import com.github.mikephil.charting.data.PieDataSet;
 import com.github.mikephil.charting.data.PieEntry;
+import com.github.mikephil.charting.formatter.IndexAxisValueFormatter;
+import com.github.mikephil.charting.formatter.LargeValueFormatter;
 
 import java.util.ArrayList;
 
+
 public class GraphCompany extends AppCompatActivity {
 
-    private int yData[] = {30, 15, 15, 12, 28};       //backend se ayega ye
-    private String xData[] = {"H1", "H2", "H3", "H4", "H5"};
-    PieChart pieChart;
-
+    private BarChart chart;
+    float barWidth;
+    float barSpace;
+    float groupSpace;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.graph);
+        setContentView(R.layout.graph_company);
 
-        pieChart = (PieChart) findViewById(R.id.idPieChart);
+        barWidth = 0.3f;
+        barSpace = 0f;
+        groupSpace = 0.4f;
 
-        // pieChart.setDescription("Number of People reached");
-        pieChart.setRotationEnabled(true);
-        pieChart.setHoleRadius(25f);
-        pieChart.setTransparentCircleAlpha(0);
-        pieChart.setCenterText("Company Chart");
-        pieChart.setCenterTextSize(10);
-        //pieChart.setDrawEntryLabels(true);
+        chart = (BarChart) findViewById(R.id.barChart);
+        chart.setDescription(null);
+        chart.setPinchZoom(false);
+        chart.setScaleEnabled(false);
+        chart.setDrawBarShadow(false);
+        chart.setDrawGridBackground(false);
 
-        addDataSet();
+        int groupCount = 5;
+        ArrayList xVals = new ArrayList();
+        xVals.add("Co1");
+        xVals.add("Co2");
+        xVals.add("Co3");
+        xVals.add("Co4");
+        xVals.add("Co5");
 
-//        pieChart.setOnChartValueSelectedListener(new OnChartValueSelectedListener() {
-//            @Override
-//            public void onValueSelected(Entry e, Highlight h) {
-//
-//                int pos1 = e.toString().indexOf("(sum): ");
-//                String sales = e.toString().substring(pos1 + 7);
-//                for(int i = 0; i < yData.length; i++){
-//                    if(yData[i] == Integer.parseInt(sales)){
-//                        pos1 = i;
-//                        break;
-//                    }
-//                }
-//                String employee = xData[pos1 + 1];
-//                Toast.makeText(GraphHoarding.this, "People " + employee+ "\n" + "Number " + sales, Toast.LENGTH_LONG).show();
-//
-//            }
+        ArrayList yVals1 = new ArrayList();
+        ArrayList yVals2 = new ArrayList();
 
-//            @Override
-//            public void onNothingSelected() {
-//
-//            }
-//        });
+        yVals1.add(new BarEntry(1, (float)1));
+        yVals2.add(new BarEntry(1, (float)5));
+        yVals1.add(new BarEntry(2, (float)6));
+        yVals2.add(new BarEntry(2, (float)8));
+        yVals1.add(new BarEntry(3, (float)2));
+        yVals2.add(new BarEntry(3, (float)25));
+        yVals1.add(new BarEntry(4, (float)0));
+        yVals2.add(new BarEntry(4, (float)8));
+        yVals1.add(new BarEntry(5, (float)1));
+        yVals2.add(new BarEntry(5, (float)10));
+
+        BarDataSet set1, set2;
+        set1 = new BarDataSet(yVals1,"#People Called");
+        set1.setColor(Color.RED);
+        set2 = new BarDataSet(yVals2, "#People Reached");
+        set2.setColor(Color.BLUE);
+        BarData data = new BarData(set1, set2);
+        data.setValueFormatter(new LargeValueFormatter());
+        chart.setData(data);
+        chart.getBarData().setBarWidth(barWidth);
+        chart.getXAxis().setAxisMinimum(0);
+        chart.getXAxis().setAxisMaximum(0 + chart.getBarData().getGroupWidth(groupSpace, barSpace) * groupCount);
+        chart.groupBars(0, groupSpace, barSpace);
+
+        Legend l = chart.getLegend();
+        l.setVerticalAlignment(Legend.LegendVerticalAlignment.TOP);
+        l.setHorizontalAlignment(Legend.LegendHorizontalAlignment.RIGHT);
+        l.setOrientation(Legend.LegendOrientation.HORIZONTAL);
+        l.setDrawInside(true);
+        l.setYOffset(20f);
+        l.setXOffset(0f);
+        l.setYEntrySpace(0f);
+        l.setTextSize(8f);
+
+        //X-axis
+        XAxis xAxis = chart.getXAxis();
+        xAxis.setGranularity(1f);
+        xAxis.setGranularityEnabled(true);
+        xAxis.setCenterAxisLabels(true);
+        xAxis.setDrawGridLines(false);
+        xAxis.setAxisMaximum(6);
+        xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
+        xAxis.setValueFormatter(new IndexAxisValueFormatter(xVals));
+
+        //Y-axis
+        chart.getAxisRight().setEnabled(false);
+        YAxis leftAxis = chart.getAxisLeft();
+        leftAxis.setValueFormatter(new LargeValueFormatter());
+        leftAxis.setDrawGridLines(true);
+        leftAxis.setSpaceTop(35f);
+        leftAxis.setAxisMinimum(0f);
+
 
 
     }
 
-    private void addDataSet() {
-        ArrayList<PieEntry> yEntrys = new ArrayList<>();
-        ArrayList<String> xEntrys = new ArrayList<>();
-        for (int i = 0; i < yData.length; i++){
-            yEntrys.add(new PieEntry(yData[i], i));
-        }
-        for (int i = 0; i < xData.length; i++){
-            xEntrys.add(xData[i]);
-        }
-
-        //create the data set
-        PieDataSet pieDataSet = new PieDataSet(yEntrys, "Number of people reached");
-        pieDataSet.setSliceSpace(2);
-        pieDataSet.setValueTextSize(12);
-
-        //add colors
-        ArrayList<Integer> colors = new ArrayList<>();
-        colors.add(Color.CYAN);
-        colors.add(Color.BLUE);
-        colors.add(Color.GREEN);
-        colors.add(Color.YELLOW);
-        colors.add(Color.rgb(255, 165, 0));
-        pieDataSet.setColors(colors);
-
-        //add legend to chart
-        Legend legend= pieChart.getLegend();
-        legend.setForm(Legend.LegendForm.CIRCLE);
-        legend.setPosition(Legend.LegendPosition.LEFT_OF_CHART);
-
-        //create piechart object
-        PieData pieData = new PieData((pieDataSet));
-        pieChart.setData(pieData);
-        pieChart.invalidate();
-
-
-    }
 }
-
