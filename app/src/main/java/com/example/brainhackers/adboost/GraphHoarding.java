@@ -1,8 +1,4 @@
-package com.example.brainhackers.adboost;
-
-/**
- * Created by shivang on 28/10/17.
- */
+package com.example.shivang.facialrecognition;
 
 import android.graphics.Color;
 import android.os.Bundle;
@@ -17,6 +13,10 @@ import com.github.mikephil.charting.data.PieEntry;
 
 import java.util.ArrayList;
 
+/**
+ * Created by shivang on 28/10/17.
+ */
+
 public class GraphHoarding extends AppCompatActivity {
 
 
@@ -28,11 +28,11 @@ public class GraphHoarding extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.graph);
+        setContentView(R.layout.graph_hoarding);
 
         pieChart = (PieChart) findViewById(R.id.idPieChart);
 
-        // pieChart.setDescription("Number of People reached");
+       // pieChart.setDescription("Number of People reached");
         pieChart.setRotationEnabled(true);
         pieChart.setHoleRadius(25f);
         pieChart.setTransparentCircleAlpha(0);
@@ -69,8 +69,7 @@ public class GraphHoarding extends AppCompatActivity {
     }
 
     private void addDataSet() {
-        ArrayList<PieEntry> yEntrys;
-        yEntrys = new ArrayList<>();
+        ArrayList<PieEntry> yEntrys = new ArrayList<>();
         ArrayList<String> xEntrys = new ArrayList<>();
         for (int i = 0; i < yData.length; i++){
             yEntrys.add(new PieEntry(yData[i], i));
