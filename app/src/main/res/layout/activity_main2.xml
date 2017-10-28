@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.example.brainhackers.adboost.Main2Activity">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="30dp"
+        android:text="Classification"
+        android:layout_gravity="center"
+        android:textColor="#000000"
+        android:textSize="30dp"
+        android:id="@+id/tvHeading"/>
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_margin="20dp"
+        android:text="COMPANY WISE"
+        android:textColor="#ffffff"
+        android:textStyle="bold"
+
+        android:background="@drawable/button_enabled"
+        android:id="@+id/btn1"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        android:layout_gravity="center"
+        android:text="HOARDING WISE"
+
+        android:textColor="#ffffff"
+        android:textStyle="bold"
+        android:background="@drawable/button_enabled"
+        android:id="@+id/btn2"/>
+</LinearLayout>

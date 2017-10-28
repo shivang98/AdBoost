@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "512493972090",
+    "firebase_url": "https://adboost-aeff8.firebaseio.com",
+    "project_id": "adboost-aeff8",
+    "storage_bucket": "adboost-aeff8.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:512493972090:android:35c06929e0f73e94",
+        "android_client_info": {
+          "package_name": "com.example.brainhackers.adboost"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "512493972090-h87fjbfkuagvk55gs63hncvcnmmpe444.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.brainhackers.adboost",
+            "certificate_hash": "bb4b411172e1d82b0aadee4eab0dae999e664aa9"
+          }
+        },
+        {
+          "client_id": "512493972090-91ntrndnn3b3ii4b74v774lg34o7lbig.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDQzlH1q0VZCZDXsas0lpugY7EmA1j6gz4"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "512493972090-91ntrndnn3b3ii4b74v774lg34o7lbig.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

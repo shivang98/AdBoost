@@ -1,0 +1,7 @@
+<resources>
+
+    <string name="hello">Hello World!</string>
+    <string name="app_name">AdBoost</string>
+    <string name="adboost">AdBoost</string>
+
+</resources>
